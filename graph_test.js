@@ -88,6 +88,16 @@ class Graph {
         }
         return result;
     }
+    removeNode(node) {
+        if (this.nodes.indexOf(node) < 0) {
+            return;
+        }
+        for (let n of node.relative) {
+            const index = n.relative.indexOf(node);
+            n.relative.splice(index, 1);
+        }
+        node.relative = [];
+    }
     serch(start, end) {
         if (this.nodes.indexOf(start) < 0 || this.nodes.indexOf(end) < 0) {
             return false;
@@ -138,3 +148,9 @@ console.log('dfsR(n0) - ', g.dfsR(n0).map(n => n.data).join(', '));
 console.log('bfs(n0) - ', g.bfs(n0).map(n => n.data).join(', '));
 // 연결확인
 console.log('serch(n0, n5) - ', g.serch(n0, n5));
+// node제거
+g.removeNode(n2);
+console.log('removeNode(n2) - ', g.serch(n0, n5));
+// node제거
+g.removeNode(n3);
+console.log('removeNode(n3) - ', g.serch(n0, n5));
