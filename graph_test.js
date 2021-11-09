@@ -15,6 +15,7 @@ class Graph {
             node.isMarked = false; 
         }
     }
+    // console.log('test');
     addEdge(node1, node2) {
         if (this.nodes.indexOf(node1) < 0) {
             this.nodes.push(node1);
